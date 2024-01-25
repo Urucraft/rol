@@ -156,6 +156,8 @@ function sellWeapon() {
 }
 function changeImage(a) {
   document.getElementById("monsterImg").src=a;
+
+  //*document.getElementById("monsterImg").onerror="this.onerror=null;this.src='./images/sample.jpg';";
 }
 
 function fightSlime() {
