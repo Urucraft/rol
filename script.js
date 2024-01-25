@@ -16,6 +16,7 @@ const goldText = document.querySelector("#goldText");
 const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
+const monsterImg = document.querySelector("#monsterImg");
 const weapons = [
   { name: 'stick', power: 5 },
   { name: 'dagger', power: 30 },
@@ -26,7 +27,7 @@ const monsters = [
   {
     name: "slime",
     level: 2,
-    health: 20
+    health: 20,
   },
   {
     name: "fanged beast",
@@ -97,14 +98,18 @@ function update(location) {
 
 function goTown() {
   update(locations[0]);
+  changeImage("town.png")
 }
 
 function goStore() {
   update(locations[1]);
+  changeImage("beast")
 }
 
 function goCave() {
   update(locations[2]);
+
+  changeImage("beast")
 }
 
 function buyHealth() {
@@ -149,20 +154,26 @@ function sellWeapon() {
     text.innerText = "Don't sell your only weapon!";
   }
 }
+function changeImage(a) {
+  document.getElementById("monsterImg").src=a;
+}
 
 function fightSlime() {
   fighting = 0;
   goFight();
+  changeImage("slime.jpg")
 }
 
 function fightBeast() {
   fighting = 1;
   goFight();
+  changeImage("beast")
 }
 
 function fightDragon() {
   fighting = 2;
   goFight();
+  changeImage("dragon")
 }
 
 function goFight() {
