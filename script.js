@@ -26,17 +26,17 @@ const monsters = [
   {
     name: "slime",
     level: 2,
-    health: 15
+    health: 20
   },
   {
     name: "fanged beast",
     level: 8,
-    health: 60
+    health: 80
   },
   {
     name: "dragon",
     level: 20,
-    health: 300
+    health: 450
   }
 ]
 const locations = [
@@ -192,8 +192,8 @@ function dodge() {
 }
 
 function defeatMonster() {
-  gold += Math.floor(monsters[fighting].level * 6.7);
-  xp += monsters[fighting].level;
+  gold += Math.floor(monsters[fighting].level * 5);
+  xp += monsters[fighting].level/2;
   goldText.innerText = gold;
   xpText.innerText = xp;
   update(locations[4]);
@@ -233,7 +233,7 @@ function pick(guess) {
     numbers.push(Math.floor(Math.random() * 11));
   }
   text.innerText = "You picked " + guess + ". Here are the random numbers:\n";
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) {
     text.innerText += numbers[i] + "\n";
   }
   if (numbers.includes(guess)) {
