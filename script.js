@@ -69,13 +69,13 @@ const locations = [
     name: "kill monster",
     "button text": ["Go to town square", "Go to town square", "Go to town square"],
     "button functions": [goTown, goTown, easterEgg],
-    text: 'The monster screams "Arg!" as it dies. You gain experience points and find gold.'
+    text: ""
   },
   {
     name: "easter egg",
     "button text": ["2", "8", "Go to town square?"],
     "button functions": [pickTwo, pickEight, goTown],
-    text: "You find a secret game. Pick a number above. Ten numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!"
+    text: "You find a secret game. Pick a number above. Five numbers will be randomly chosen between 0 and 10. If the number you choose matches one of the random numbers, you win!"
   }
 
 ];
@@ -187,8 +187,8 @@ function goFight() {
 }
 
 function attack() {
-  text.innerText = "The " + monsters[fighting].name + " attacks.";
-  text.innerText += " You attack it with your " + weapons[currentWeapon].name + ".";
+  text.innerText = "El " + monsters[fighting].name + " te ataca."+"Te hace "+monsters[fighting].level+" de daño.";
+  text.innerText += "\nAtacas al enemigo con tu " + weapons[currentWeapon].name +" , haciéndole "+(weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1)+" de daño.";
   health -= monsters[fighting].level;
   monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
   healthText.innerText = health;
@@ -201,7 +201,7 @@ function attack() {
 }
 
 function dodge() {
-  text.innerText = "You dodge the attack from the " + monsters[fighting].name;
+  text.innerText = "Esquivaste el ataque de " + monsters[fighting].name;
 }
 
 function defeatMonster() {
@@ -210,6 +210,7 @@ function defeatMonster() {
   goldText.innerText = gold;
   xpText.innerText = xp;
   update(locations[4]);
+  text.innerText+="Derrotaste a tu enemigo y has ganado "+(Math.floor(monsters[fighting].level * 5))+" de oro y "+(monsters[fighting].level/2)+" de XP.";
 }
 
 function lose() {
@@ -229,7 +230,7 @@ function restart() {
 }
 
 function easterEgg() {
-  update(locations[7]);
+  update(locations[5]);
 }
 
 function pickTwo() {
